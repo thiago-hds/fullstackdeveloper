@@ -1,35 +1,16 @@
 <?php
 
-$dsn = 'mysql:host=gd-fs-docker-mysql;port=3306;dbname=gdfs';
-$user = 'gdfs';
-$password = 'gdsecret';
+require_once 'bootstrap.php';
 
-$ok = true;
-
-try {
-    $db = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-
-    $sql = "select curdate() from dual";
-
-    $statement = $db->prepare($sql);
-
-    $statement->execute();
-
-    $now = $statement->fetchColumn();
-
-    $ok = ($now !== FALSE);
-
-} catch (PDOException $e) {
-    $ok = false;
-}
+$cidades = $repository->getCidades();
+$categorias = $repository->getCategorias();
 ?>
 <!doctype html>
 <html lang="pt_BR">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Gaudium Software - Prova Desenvolvedor Full Stack</title>
 </head>
 <body>
@@ -41,17 +22,54 @@ try {
         <div class="row">
             <h2 class="mx-auto">Prova Desenvolvedor Full Stack</h2>
         </div>
-        <div class="row pt-5">
-            <div class="jumbotron mx-auto">
-                <?php if ($ok) { ?>
-                    <div class="alert alert-success mx-auto" role="alert">
-                        Ambiente instalado com sucesso!
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="cidade_id">Cidade</label>
+                            <select class="form-control" id="cidade_id" name="cidade_id">
+                                <option>Selecione uma cidade</option>
+                                <?php foreach($cidades as $cidade): ?>
+                                    <option value="<?= $cidade['id'] ?>">
+                                        <?= $cidade['nome'] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="categoria_id">Categoria</label>
+                            <select class="form-control" id="categoria_id" name="categoria_id">
+                                <?php foreach($categorias as $categoria): ?>
+                                    <option value="<?= $categoria['id'] ?>">
+                                        <?= $categoria['nome'] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endereco_partida">Endereço de Partida</label>
+                            <input type="text" class="form-control" name="endereco_partida" id="endereco_partida" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endereco_destino">Endereço de Partida</label>
+                            <input type="text" class="form-control" name="endereco_destino" id="endereco_destino" >
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Efetuar Estimativa
+                        </button>
+
                     </div>
-                <?php } else { ?>
-                    <div class="alert alert-danger mx-auto" role="alert">
-                        Não foi possível conectar ao banco de dados.
-                    </div>
-                <?php } ?>
+                </div>
+            </div>
+            <div class="col-8">
+                <p>
+                Em Rio de Janeiro, carro executivo, de Rua da Assembléia, 10 para Rua Barata Ribeiro, 30, às 10:34: R$ 23,15
+                </p>
             </div>
         </div>
     </div> <!-- /container -->
