@@ -34,6 +34,26 @@ $(document).ready(() => {
 			},
 		});
 	});
+
+	$('#cidade_id').on('change', () => {
+		const cidadeId = $('#cidade_id option:selected').val();
+		$.ajax({
+			url: '/api/categorias.php',
+			type: 'POST',
+			dataType: 'json',
+			data: { cidade_id: cidadeId },
+			success: function (data) {
+				const options = data
+					.map(
+						categoria =>
+							`<option value="${categoria.id}">${categoria.nome}</option>`
+					)
+					.join('');
+				console.log(options);
+			},
+			error: function (xhr, exception) {
+				console.log(exception);
+			},
+		});
+	});
 });
-
-
