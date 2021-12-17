@@ -22,9 +22,9 @@ $categorias = $repository->getCategorias();
         <div class="row">
             <h2 class="mx-auto">Prova Desenvolvedor Full Stack</h2>
         </div>
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col-4">
-                <div class="card">
+                <div class="card bg-info border-primary">
                     <div class="card-body">
                         <form action="">
                             <div class="form-group">
@@ -60,17 +60,22 @@ $categorias = $repository->getCategorias();
                                 <input type="text" class="form-control" name="endereco_destino" id="endereco_destino" >
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-block">
+                            <button type="submit" class="btn btn-light btn-block">
                                 Efetuar Estimativa
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div id="historico" class="col-8">
-                <p>
-                Em Rio de Janeiro, carro executivo, de Rua da Assembléia, 10 para Rua Barata Ribeiro, 30, às 10:34: R$ 23,15
-                </p>
+            <div class="col-6">
+                <div class="card">
+                    <div id="historico" class="card-body bg-warning border-warning">
+                        <p class="text-monospace text-success">
+                            Em Rio de Janeiro, carro executivo, de Rua da Assembléia, 10 para Rua Barata Ribeiro, 30, às 10:34: R$ 23,15
+                        </p>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div> <!-- /container -->

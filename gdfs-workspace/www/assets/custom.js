@@ -5,7 +5,9 @@ function exibirResultado(dados) {
 	const categoria = $('#categoria_id option:selected').text();
 	const strResultado = `Em ${cidade}, ${categoria} , de ${endereco_partida} para ${endereco_destino}, às ${hora}: R$ ${total}. `;
 
-	$('#historico').append(`<p>${strResultado}</p>`);
+	$('#historico').append(
+		`<p class="text-monospace text-success">${strResultado}</p>`
+	);
 }
 
 $(document).ready(() => {
