@@ -46,7 +46,7 @@ catch(Exception $ex){
 }
 
 header('Content-Type', 'application/json');
-echo json_encode($dadosHistorico);
+echo json_encode($resposta);
 
 
 
