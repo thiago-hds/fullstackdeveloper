@@ -26,47 +26,48 @@ $categorias = $repository->getCategorias();
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="cidade_id">Cidade</label>
-                            <select class="form-control" id="cidade_id" name="cidade_id">
-                                <option>Selecione uma cidade</option>
-                                <?php foreach($cidades as $cidade): ?>
-                                    <option value="<?= $cidade['id'] ?>">
-                                        <?= $cidade['nome'] ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+                        <form action="">
+                            <div class="form-group">
+                                <label for="cidade_id">Cidade</label>
+                                <select class="form-control" id="cidade_id" name="cidade_id">
+                                    <option>Selecione uma cidade</option>
+                                    <?php foreach($cidades as $cidade): ?>
+                                        <option value="<?= $cidade['id'] ?>">
+                                            <?= $cidade['nome'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="categoria_id">Categoria</label>
-                            <select class="form-control" id="categoria_id" name="categoria_id">
-                                <?php foreach($categorias as $categoria): ?>
-                                    <option value="<?= $categoria['id'] ?>">
-                                        <?= $categoria['nome'] ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <label for="categoria_id">Categoria</label>
+                                <select class="form-control" id="categoria_id" name="categoria_id">
+                                    <?php foreach($categorias as $categoria): ?>
+                                        <option value="<?= $categoria['id'] ?>">
+                                            <?= $categoria['nome'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="endereco_partida">Endereço de Partida</label>
-                            <input type="text" class="form-control" name="endereco_partida" id="endereco_partida" >
-                        </div>
+                            <div class="form-group">
+                                <label for="endereco_partida">Endereço de Partida</label>
+                                <input type="text" class="form-control" name="endereco_partida" id="endereco_partida" >
+                            </div>
 
-                        <div class="form-group">
-                            <label for="endereco_destino">Endereço de Partida</label>
-                            <input type="text" class="form-control" name="endereco_destino" id="endereco_destino" >
-                        </div>
+                            <div class="form-group">
+                                <label for="endereco_destino">Endereço de Partida</label>
+                                <input type="text" class="form-control" name="endereco_destino" id="endereco_destino" >
+                            </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Efetuar Estimativa
-                        </button>
-
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Efetuar Estimativa
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-8">
+            <div id="historico" class="col-8">
                 <p>
                 Em Rio de Janeiro, carro executivo, de Rua da Assembléia, 10 para Rua Barata Ribeiro, 30, às 10:34: R$ 23,15
                 </p>
@@ -83,5 +84,6 @@ $categorias = $repository->getCategorias();
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+<script src="assets/custom.js"></script>
 </body>
 </html>

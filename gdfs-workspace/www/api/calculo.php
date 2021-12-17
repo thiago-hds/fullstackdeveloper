@@ -35,6 +35,7 @@ try{
 
     $repository->saveHistorico($dadosHistorico);
 
+    $dadosHistorico['hora'] = $hora->format('d/m/Y H:i:s');
     $resposta = $dadosHistorico;
 }
 catch(Exception $ex){
