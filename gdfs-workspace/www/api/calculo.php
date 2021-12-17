@@ -36,6 +36,7 @@ try{
     $repository->saveHistorico($dadosHistorico);
 
     $dadosHistorico['hora'] = $hora->format('d/m/Y H:i:s');
+    $dadosHistorico['total'] = number_format($total, 2, ',', '.');
     $resposta = $dadosHistorico;
 }
 catch(Exception $ex){
